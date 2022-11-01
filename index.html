@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-size: 40px;
+        font-family: fantasy;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 800px;
+        margin: auto;
+        color: white;
+
+        background-image: url("https://www.muyinteresante.com.mx/wp-content/uploads/2018/05/httpstved-prod.adobecqms.netcontentdameditorialTelevisamexicomuyinteresantemxespacio1406olor-en-el-centro-de-la-galaxia-1080x764.imgo_.jpg");
+      }
+      .card {
+        background: linear-gradient(
+            217deg,
+            rgba(255, 0, 0, 0),
+            rgba(255, 0, 0, 0) 70.71%
+          ),
+          linear-gradient(
+            127deg,
+            rgba(16, 247, 255, 0),
+            rgba(0, 255, 0, 0) 70.71%
+          ),
+          linear-gradient(336deg, rgba(0, 0, 255, 0), rgba(0, 0, 255, 0) 70.71%);
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px 4px rgb(181, 181, 228);
+        width: 200px;
+        padding: 12px;
+        text-align: center;
+      }
+      .gravittyCss {
+        font-size: 30px;
+      }
+      .row {
+        display: flex;
+        margin-left: 10px;
+        justify-content: space-between;
+      }
+      input {
+        width: 50px;
+      }
+      .btn {
+        width: 100px;
+        background: radial-gradient(gold, red, blue, yellow, black);
+      }
+      .title {
+        font-size: 40px;
+        font-family: fantasy;
+        color: white;
+      }
+      #formula {
+        color: white;
+      }
+      .rowtitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <script>
+      function parabolic() {
+        var vi = document.getElementById("vi").value;
+        var theta = document.getElementById("theta").value;
+        var g = document.getElementById("g").value;
+        theta = (Math.PI * theta) / 180;
+
+        var vix = vi * Math.cos(theta).toFixed(3);
+        var viy = vi * Math.sin(theta).toFixed(3);
+
+        var ts = viy / g;
+        var tt = ts * 2;
+
+        var ymax = Math.pow(viy, 2) / (2 * g);
+        var xmax = vix * tt;
+
+        var formula = document.getElementById("formula");
+        formula.innerHTML = `vix=${vix}<br>
+          viy=${viy.toFixed(3)}<br>
+          ts=${ts.toFixed(3)}<br>
+          tt=${tt.toFixed(3)}<br>
+          ymax=${ymax.toFixed(3)}<br>
+          xmax=${xmax.toFixed(3)}<br>
+          `;
+      }
+      function process(name, gr) {
+        var planet = document.getElementById("planet");
+        var g = document.getElementById("g");
+
+        g.value = gr;
+        planet.innerHTML = `${name}<br>${gr}`;
+      }
+    </script>
+    
+  </head>
+  <body>
+    <div class="rowtitle">
+      Tiro parabolico en el
+      sistema solar <br>
+      Nicolas Alexander Cabezas <br>
+      Grado 5
+    </div>
+    <div class="row">
+      <div class="card" onclick="process('Moon',1.62)">
+        <div>Moon</div>
+        <div class="gravittyCss">1.62 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/earths_moon/desktop_light.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Sun',274)" class="card">
+        <div>Sun</div>
+        <div class="gravittyCss">274 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/sun/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Mercury',3.7 )" class="card">
+        <div>Mercury</div>
+        <div class="gravittyCss">3.7 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/mercury/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Venus',8.87)" class="card">
+        <div>Venus</div>
+        <div class="gravittyCss">8.87 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/venus_surface/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div onclick="process('Earth',9.807)" class="card">
+        <div>Earth</div>
+        <div class="gravittyCss">9.807 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/earth/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Mars',3.721)" class="card">
+        <div>Mars</div>
+        <div class="gravittyCss">3.721 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/mars/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Jupiter',24.79)" class="card">
+        <div>Jupiter</div>
+        <div class="gravittyCss">24.79 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/jupiter/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Saturn',10.44)" class="card">
+        <div>Saturn</div>
+        <div class="gravittyCss">10.44 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/saturn/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div onclick="process('Uranus',8.87)" class="card">
+        <div>Uranus</div>
+        <div class="gravittyCss">8.87 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/uranus/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Neptune',11.15)" class="card">
+        <div>Neptune</div>
+        <div class="gravittyCss">11.15 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/neptune/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div onclick="process('Pluto',0.62)" class="card">
+        <div>Pluto</div>
+        <div class="gravittyCss">0.62 m/s²</div>
+        <div>
+          <video width="190" height="140" controls autoplay="true">
+            <source
+              src="https://www.gstatic.com/culturalinstitute/searchar/assets/pluto/desktop_dark.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="card">
+        <div id="planet" class="title">earth</div>
+        <div class="row">
+          <div>vi</div>
+          <div><input type="number" id="vi" /></div>
+        </div>
+        <div class="row">
+          <div>Theta</div>
+          <div><input type="number" id="theta" /></div>
+        </div>
+        <div class="row">
+          <div>G</div>
+          <div><input type="number" id="g" /></div>
+        </div>
+
+        <div>
+          <input
+            class="btn"
+            onclick="parabolic()"
+            type="button"
+            value="Resolve"
+          />
+        </div>
+      </div>
+      <div class="card">
+        <div id="formula"></div>
+      </div>
+    </div>
+  </body>
+</html>
